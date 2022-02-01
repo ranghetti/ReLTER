@@ -65,7 +65,7 @@ jobs:
         run: |
           remotes::install_deps(
             dependencies = TRUE, 
-            build = ifelse(Sys.info()["sysname"]=="Linux", "source", "binary")
+            type = ifelse(Sys.info()["sysname"]=="Linux", "source", "binary")
           )
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}

@@ -63,10 +63,8 @@ jobs:
           
       - name: Install dependencies
         run: |
-          remotes::install_deps(
-            dependencies = TRUE, 
-            type = ifelse(Sys.info()["sysname"]=="Linux", "source", "binary")
-          )
+          if (info()["sysname"]!="Darwin") {options("pkgType" = "binary")}
+          remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
